@@ -20,8 +20,8 @@
         .error-container {
             background-color: #fff;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            width: 420px;
+            padding: 60px; /* Aumenté el padding para más espacio */
+            width: 450px; /* Aumenté el ancho del contenedor */
             border-radius: 8px;
         }
 
@@ -29,28 +29,28 @@
             color: red;
             font-size: 60px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 30px; /* Aumenté el margen inferior */
             max-height: 80px;
         }
 
         .error-message {
-            font-size: 18px;
+            font-size: 20px; /* Aumenté el tamaño del texto */
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 25px; /* Aumenté el margen inferior */
         }
 
         .error-description {
-            font-size: 16px;
+            font-size: 18px; /* Aumenté el tamaño del texto */
             color: #888;
-            margin-bottom: 30px;
+            margin-bottom: 40px; /* Aumenté el margen inferior */
         }
 
         .reload-button {
             background-color: #007bff;
             color: #ffffff;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 12px 25px; /* Aumenté el padding para un botón más grande */
+            font-size: 18px; /* Aumenté el tamaño del texto */
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
@@ -81,7 +81,7 @@
         // Función para simular la recarga de la página
         function reloadPage() {
             // Simulamos un retraso en la recarga para dar la sensación de que algo está pasando
-            setTimeout(function() {
+            setTimeout(function () {
                 // Recargar la página actual
                 location.reload();
             }, 2000); // Retraso de 2 segundos
