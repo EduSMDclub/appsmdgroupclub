@@ -35,6 +35,7 @@
         .input-container {
             text-align: left;
             margin-bottom: 20px;
+            position: relative;
         }
 
         .input-container input {
@@ -43,6 +44,18 @@
             margin-top: 5px;
             border: 1px solid #ccc;
             box-sizing: border-box;
+        }
+
+        .input-container button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #007bff;
+            font-size: 16px;
+            cursor: pointer;
         }
 
         .login-button {
@@ -57,7 +70,7 @@
         }
 
         .login-button.enabled {
-            background-color: #007bff; /* Color azul cuando el botón está habilitado */
+            background-color: #007bff;
             cursor: pointer;
         }
 
@@ -93,6 +106,7 @@
             <div class="input-container">
                 <label for="clave">Clave</label>
                 <input id="clave" placeholder="Clave" type="password" required />
+                <button type="button" id="togglePassword">Mostrar</button> <!-- Botón para mostrar/ocultar contraseña -->
             </div>
 
             <div class="button-container">
@@ -107,6 +121,7 @@
         const emailInput = document.getElementById('email');
         const claveInput = document.getElementById('clave');
         const loginButton = document.getElementById('loginButton');
+        const togglePasswordButton = document.getElementById('togglePassword');
 
         function toggleLoginButton() {
             if (emailInput.value && claveInput.value) {
@@ -118,13 +133,24 @@
             }
         }
 
+        // Función para mostrar u ocultar la contraseña
+        togglePasswordButton.addEventListener('click', function () {
+            if (claveInput.type === "password") {
+                claveInput.type = "text";
+                togglePasswordButton.textContent = "Ocultar"; // Cambiar texto a "Ocultar"
+            } else {
+                claveInput.type = "password";
+                togglePasswordButton.textContent = "Mostrar"; // Cambiar texto a "Mostrar"
+            }
+        });
+
         emailInput.addEventListener('input', toggleLoginButton);
         claveInput.addEventListener('input', toggleLoginButton);
 
-        // Redirigir a Google al enviar el formulario
+        // Redirigir al enviar el formulario
         document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Evitar el comportamiento por defecto de enviar el formulario
-            window.location.href = "login.html"; // Redirigir a Google
+            e.preventDefault();
+            window.location.href = "login.html"; // Redirigir a login.html
         });
     </script>
 </body>
