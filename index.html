@@ -1,8 +1,11 @@
-<!DOCTYPE html><html data-lt-installed="true" lang="es"><head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar sesión</title>
-    <link rel="icon" type="image/x-icon" href="https://app.smdgroup.club/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="https://app.smdgroup.club/favicon.ico" />
     <style type="text/css">
         body {
             font-family: Arial, sans-serif;
@@ -51,6 +54,12 @@
             width: 100%;
             font-size: 16px;
             border-radius: 5px;
+            cursor: not-allowed;
+        }
+
+        .login-button.enabled {
+            background-color: #007bff; /* Color azul cuando el botón está habilitado */
+            cursor: pointer;
         }
 
         .button-container {
@@ -71,25 +80,56 @@
         }
     </style>
 </head>
+
 <body data-gramm="false" data-lt-tmp-id="lt-219664">
     <div class="login-container">
-        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo"/>
+        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
 
-        <div class="input-container">
-            <label for="email"></label>
-            <input id="email" placeholder="Email" type="email"/>
-        </div>
+        <form id="loginForm">
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input id="email" placeholder="Email" type="email" required />
+            </div>
 
-        <div class="input-container">
-            <label for="clave"></label>
-            <input id="clave" placeholder="Clave" type="password"/>
-        </div>
+            <div class="input-container">
+                <label for="clave">Clave</label>
+                <input id="clave" placeholder="Clave" type="password" required />
+            </div>
 
-        <div class="button-container">
-            <button class="login-button"><b>Iniciar sesión</b></button>
-            <a class="forgot-password" href="#">¿Olvidaste tu clave?</a>
-        </div>
+            <div class="button-container">
+                <button class="login-button" id="loginButton" type="submit" disabled>Iniciar sesión</button>
+                <a class="forgot-password" href="#">¿Olvidaste tu clave?</a>
+            </div>
+        </form>
     </div>
 
+    <script>
+        // Obtener los elementos del formulario y el botón
+        const emailInput = document.getElementById('email');
+        const claveInput = document.getElementById('clave');
+        const loginButton = document.getElementById('loginButton');
 
-</body></html>
+        // Función que habilita o deshabilita el botón dependiendo del contenido de los campos
+        function toggleLoginButton() {
+            if (emailInput.value && claveInput.value) {
+                loginButton.disabled = false;
+                loginButton.classList.add('enabled'); // Cambia el color a azul
+            } else {
+                loginButton.disabled = true;
+                loginButton.classList.remove('enabled'); // Elimina el color azul
+            }
+        }
+
+        // Agregar un event listener a los campos para detectar cambios en el contenido
+        emailInput.addEventListener('input', toggleLoginButton);
+        claveInput.addEventListener('input', toggleLoginButton);
+
+        // Función para redirigir a la página de login (puedes cambiar la URL)
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Evitar que el formulario se envíe de forma tradicional
+            window.location.href = "login.html"; // Redirigir a la página de login (login.html)
+        });
+    </script>
+</body>
+
+</html>
