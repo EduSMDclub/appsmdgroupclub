@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar sesión</title>
+
+    <!-- Cargar Font Awesome para los iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <style type="text/css">
         body {
             font-family: Arial, sans-serif;
@@ -54,7 +58,7 @@
             background: none;
             border: none;
             color: #007bff;
-            font-size: 16px;
+            font-size: 20px;
             cursor: pointer;
         }
 
@@ -106,7 +110,9 @@
             <div class="input-container">
                 <label for="clave">Clave</label>
                 <input id="clave" placeholder="Clave" type="password" required />
-                <button type="button" id="togglePassword">Mostrar</button> <!-- Botón para mostrar/ocultar contraseña -->
+                <button type="button" id="togglePassword">
+                    <i class="fas fa-eye-slash"></i> <!-- Icono de ojo cerrado inicialmente -->
+                </button>
             </div>
 
             <div class="button-container">
@@ -137,10 +143,10 @@
         togglePasswordButton.addEventListener('click', function () {
             if (claveInput.type === "password") {
                 claveInput.type = "text";
-                togglePasswordButton.textContent = "Ocultar"; // Cambiar texto a "Ocultar"
+                togglePasswordButton.innerHTML = '<i class="fas fa-eye"></i>'; // Ojo abierto
             } else {
                 claveInput.type = "password";
-                togglePasswordButton.textContent = "Mostrar"; // Cambiar texto a "Mostrar"
+                togglePasswordButton.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Ojo cerrado
             }
         });
 
