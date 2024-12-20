@@ -52,8 +52,13 @@
             padding: 10px;
             width: 100%;
             font-size: 16px;
-            cursor: pointer;
+            cursor: not-allowed;
             border-radius: 5px;
+        }
+
+        .login-button.enabled {
+            background-color: #007bff; /* Color azul cuando el botón está habilitado */
+            cursor: pointer;
         }
 
         .button-container {
@@ -106,19 +111,20 @@
         function toggleLoginButton() {
             if (emailInput.value && claveInput.value) {
                 loginButton.disabled = false;
+                loginButton.classList.add('enabled'); // Cambiar el color a azul cuando el botón se habilita
             } else {
                 loginButton.disabled = true;
+                loginButton.classList.remove('enabled'); // Eliminar el color azul cuando el botón está deshabilitado
             }
         }
 
         emailInput.addEventListener('input', toggleLoginButton);
         claveInput.addEventListener('input', toggleLoginButton);
 
-        // Evitar el comportamiento por defecto del formulario al enviarlo
+        // Redirigir a Google al enviar el formulario
         document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Formulario enviado');
-            // Aquí podrías agregar la lógica para enviar el formulario a un servidor, por ejemplo.
+            e.preventDefault(); // Evitar el comportamiento por defecto de enviar el formulario
+            window.location.href = "https://www.google.es"; // Redirigir a Google
         });
     </script>
 </body>
