@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar sesión</title>
     <link rel="icon" type="image/x-icon" href="https://app.smdgroup.club/favicon.ico" />
+    <!-- Agregar el enlace a Font Awesome para los íconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style type="text/css">
         body {
             font-family: Arial, sans-serif;
@@ -54,7 +56,7 @@
             transform: translateY(-50%);
             cursor: pointer;
             font-size: 18px;
-            color: #555;
+            color: #555; /* Gris oscuro */
         }
 
         .login-button {
@@ -104,7 +106,8 @@
 
             <div class="input-container">
                 <input id="clave" placeholder="Clave" type="password" required />
-                <span id="togglePassword" class="password-eye">&#x1F441;</span> <!-- Ojo abierto -->
+                <!-- Ojo cerrado como ícono usando Font Awesome -->
+                <span id="togglePassword" class="password-eye"><i class="fas fa-eye-slash"></i></span>
             </div>
 
             <div class="button-container">
@@ -143,9 +146,9 @@
 
             // Cambiar el icono de ojo según el estado
             if (type === 'password') {
-                togglePassword.innerHTML = '&#x1F441;'; // Ojo cerrado
+                togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Ojo cerrado
             } else {
-                togglePassword.innerHTML = '&#x1F576;'; // Ojo abierto
+                togglePassword.innerHTML = '<i class="fas fa-eye"></i>'; // Ojo abierto
             }
         });
 
