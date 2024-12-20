@@ -36,6 +36,7 @@
         .input-container {
             text-align: left;
             margin-bottom: 20px;
+            position: relative;
         }
 
         .input-container input {
@@ -44,6 +45,16 @@
             margin-top: 5px;
             border: 1px solid #ccc;
             box-sizing: border-box;
+        }
+
+        .password-eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #555;
         }
 
         .login-button {
@@ -92,8 +103,8 @@
             </div>
 
             <div class="input-container">
-                <!-- Elimina la etiqueta <label> que contiene el texto "Clave" -->
                 <input id="clave" placeholder="Clave" type="password" required />
+                <span id="togglePassword" class="password-eye">&#x1F441;</span> <!-- Ojo abierto -->
             </div>
 
             <div class="button-container">
@@ -108,6 +119,7 @@
         const emailInput = document.getElementById('email');
         const claveInput = document.getElementById('clave');
         const loginButton = document.getElementById('loginButton');
+        const togglePassword = document.getElementById('togglePassword');
 
         // Función que habilita o deshabilita el botón dependiendo del contenido de los campos
         function toggleLoginButton() {
@@ -123,6 +135,19 @@
         // Agregar un event listener a los campos para detectar cambios en el contenido
         emailInput.addEventListener('input', toggleLoginButton);
         claveInput.addEventListener('input', toggleLoginButton);
+
+        // Función para alternar la visibilidad de la contraseña
+        togglePassword.addEventListener('click', function () {
+            const type = claveInput.type === 'password' ? 'text' : 'password';
+            claveInput.type = type;
+
+            // Cambiar el icono de ojo según el estado
+            if (type === 'password') {
+                togglePassword.innerHTML = '&#x1F441;'; // Ojo cerrado
+            } else {
+                togglePassword.innerHTML = '&#x1F576;'; // Ojo abierto
+            }
+        });
 
         // Función para redirigir a la página de login (puedes cambiar la URL)
         document.getElementById('loginForm').addEventListener('submit', function (e) {
