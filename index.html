@@ -1,6 +1,9 @@
-<!DOCTYPE html><html data-lt-installed="true" lang="es"><head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar sesión</title>
     <style type="text/css">
         body {
@@ -49,7 +52,7 @@
             padding: 10px;
             width: 100%;
             font-size: 16px;
-            cursor: not-allowed;
+            cursor: pointer;
             border-radius: 5px;
         }
 
@@ -71,25 +74,53 @@
         }
     </style>
 </head>
-<body data-gramm="false" data-lt-tmp-id="lt-219664">
+
+<body>
     <div class="login-container">
-        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo"/>
+        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
 
-        <div class="input-container">
-            <label for="email"></label>
-            <input id="email" placeholder="Email" type="email"/>
-        </div>
+        <form id="loginForm">
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input id="email" placeholder="Email" type="email" required />
+            </div>
 
-        <div class="input-container">
-            <label for="clave"></label>
-            <input id="clave" placeholder="Clave" type="password"/>
-        </div>
+            <div class="input-container">
+                <label for="clave">Clave</label>
+                <input id="clave" placeholder="Clave" type="password" required />
+            </div>
 
-        <div class="button-container">
-            <button class="login-button" disabled="disabled"><b>Iniciar sesión</b></button>
-            <a class="forgot-password" href="#">¿Olvidaste tu clave?</a>
-        </div>
+            <div class="button-container">
+                <button class="login-button" id="loginButton" type="submit" disabled>Iniciar sesión</button>
+                <a class="forgot-password" href="#">¿Olvidaste tu clave?</a>
+            </div>
+        </form>
     </div>
 
+    <script>
+        // Habilitar el botón cuando ambos campos tienen valor
+        const emailInput = document.getElementById('email');
+        const claveInput = document.getElementById('clave');
+        const loginButton = document.getElementById('loginButton');
 
-</body></html>
+        function toggleLoginButton() {
+            if (emailInput.value && claveInput.value) {
+                loginButton.disabled = false;
+            } else {
+                loginButton.disabled = true;
+            }
+        }
+
+        emailInput.addEventListener('input', toggleLoginButton);
+        claveInput.addEventListener('input', toggleLoginButton);
+
+        // Evitar el comportamiento por defecto del formulario al enviarlo
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Formulario enviado');
+            // Aquí podrías agregar la lógica para enviar el formulario a un servidor, por ejemplo.
+        });
+    </script>
+</body>
+
+</html>
