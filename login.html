@@ -21,38 +21,6 @@
             overflow: hidden;
         }
 
-        .loading-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .loading-message {
-            font-size: 20px;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .loading-spinner {
-            border: 4px solid #f3f3f3; /* Color claro */
-            border-top: 4px solid #007bff; /* Color azul */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .error-container {
             background-color: #fff;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
@@ -69,6 +37,21 @@
             font-weight: bold;
             margin-bottom: 40px;
             max-height: 80px;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3; /* Color claro */
+            border-top: 4px solid #888; /* Color gris oscuro */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .error-message {
@@ -103,15 +86,12 @@
 </head>
 
 <body>
-    <!-- Contenedor de la animación de carga -->
-    <div class="loading-container" id="loadingContainer">
-        <div class="loading-message">Intentando cargar...</div>
-        <div class="loading-spinner"></div>
-    </div>
-
     <!-- Contenedor del mensaje de error -->
     <div class="error-container" id="errorContainer">
         <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
+
+        <!-- Animación de carga (ruleta) -->
+        <div class="loading-spinner"></div>
 
         <div class="error-message">
             <b>¡Error de conexión!</b>
@@ -129,7 +109,6 @@
         function simulateLoading() {
             // Ocultar el contenedor de carga y mostrar el de error después de un tiempo
             setTimeout(function() {
-                document.getElementById('loadingContainer').style.display = 'none'; // Ocultar la animación de carga
                 document.getElementById('errorContainer').style.display = 'block'; // Mostrar el mensaje de error
             }, 3000); // Esperar 3 segundos antes de mostrar el error
         }
