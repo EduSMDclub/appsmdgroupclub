@@ -1,0 +1,95 @@
+<!DOCTYPE html><html data-lt-installed="true" lang="es"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Iniciar sesión</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            width: 420px;
+        }
+
+        .logo {
+            color: red;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            max-height: 80px;
+        }
+
+        .input-container {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .login-button {
+            background-color: #e2e2e2;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            cursor: not-allowed;
+            border-radius: 5px;
+        }
+
+        .button-container {
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .forgot-password {
+            color: #0066ff;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 16px;
+            display: inline-block;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body data-gramm="false" data-lt-tmp-id="lt-219664">
+    <div class="login-container">
+        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo"/>
+
+        <div class="input-container">
+            <label for="email"></label>
+            <input id="email" placeholder="Email" type="email"/>
+        </div>
+
+        <div class="input-container">
+            <label for="clave"></label>
+            <input id="clave" placeholder="Clave" type="password"/>
+        </div>
+
+        <div class="button-container">
+            <button class="login-button" disabled="disabled"><b>Iniciar sesión</b></button>
+            <a class="forgot-password" href="#">¿Olvidaste tu clave?</a>
+        </div>
+    </div>
+
+
+</body></html>
