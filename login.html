@@ -19,9 +19,9 @@
         .error-container {
             background-color: #fff;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px; /* Ajustado al mismo padding que en el login */
+            padding: 25px; /* Reducido un poco para hacerlo más pequeño */
             text-align: center;
-            width: 420px; /* El mismo ancho que el login */
+            width: 400px; /* Reducido para hacerlo más pequeño */
         }
 
         .logo {
@@ -50,42 +50,4 @@
             border: none;
             padding: 10px 20px; /* Padding similar al del botón del login */
             font-size: 16px; /* Tamaño de fuente igual al del login */
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .reload-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="error-container">
-        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
-
-        <div class="error-message">
-            <b>¡Error de conexión!</b>
-        </div>
-
-        <div class="error-description">
-            Lo sentimos, no pudimos acceder al portal en este momento. Puede que haya un problema de conexión o que el servidor no esté disponible.
-        </div>
-
-        <a href="#" class="reload-button" onclick="reloadPage()">Reintentar</a>
-    </div>
-
-    <script>
-        // Función para simular la recarga de la página
-        function reloadPage() {
-            // Simulamos un retraso en la recarga para dar la sensación de que algo está pasando
-            setTimeout(function () {
-                // Recargar la página actual
-                location.reload();
-            }, 2000); // Retraso de 2 segundos
-        }
-    </script>
-</body>
-
-</html>
+            border-rad
