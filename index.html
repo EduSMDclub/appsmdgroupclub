@@ -25,14 +25,14 @@
             padding: 40px;
             text-align: center;
             width: 420px; /* Mantener el mismo ancho original */
-            max-width: 100%;
+            max-width: 100%; /* Asegurar que no se salga del contenedor */
             box-sizing: border-box;
         }
 
-        /* Añadir un pequeño margen lateral en móviles, sin alterar el diseño original */
+        /* Solo en pantallas pequeñas, agregar margen lateral */
         @media (max-width: 480px) {
             .login-container {
-                margin: 0 15px; /* Añadir margen lateral solo en móviles */
+                margin: 0 20px; /* Margen lateral de 20px */
             }
         }
 
