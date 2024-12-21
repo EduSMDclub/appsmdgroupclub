@@ -63,11 +63,6 @@
             border-width: 2px;
         }
 
-        /* Estilo cuando el campo es válido (azul) */
-        .input-container input.valid {
-            border-color: #2ecc71; /* Verde */
-        }
-
         .password-eye {
             position: absolute;
             right: 10px;
@@ -167,9 +162,7 @@
         emailInput.addEventListener('blur', function () {
             if (!validateEmail(emailInput.value) || emailInput.value.trim() === '') {
                 emailInput.classList.add('invalid');
-                emailInput.classList.remove('valid');
             } else {
-                emailInput.classList.add('valid');
                 emailInput.classList.remove('invalid');
             }
         });
@@ -178,9 +171,7 @@
         claveInput.addEventListener('blur', function () {
             if (claveInput.value.trim() === '') {
                 claveInput.classList.add('invalid');
-                claveInput.classList.remove('valid');
             } else {
-                claveInput.classList.add('valid');
                 claveInput.classList.remove('invalid');
             }
         });
