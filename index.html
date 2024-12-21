@@ -6,16 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar sesión</title>
     <link rel="icon" type="image/x-icon" href="https://app.smdgroup.club/favicon.ico" />
+    <!-- Agregar el enlace a Font Awesome para los íconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style type="text/css">
-        /* Aquí van los estilos (no los repito ya que son los mismos) */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f4fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px; /* Aumentamos el padding para más espacio */
+            text-align: center;
+            width: 420px; /* Aumentamos el ancho */
+        }
+
+        .logo {
+            color: red;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 30px; /* Aumentamos el espacio debajo de la imagen */
+            max-height: 80px;
+        }
+
+        .input-container {
+            text-align: left;
+            margin-bottom: 25px; /* Aumentamos el margen entre los campos */
+            position: relative;
+        }
+
+        .input-container input {
+            width: 100%; /* El ancho sigue siendo 100% */
+            padding: 15px; /* Aumentamos el padding para hacer el campo más grande */
+            margin-top: 5px;
+            border: 1px solid #ccc; /* Borde gris claro por defecto */
+            box-sizing: border-box;
+            font-size: 16px; /* Aumentamos el tamaño de la fuente */
+            border-radius: 0; /* Esquinas cuadradas por defecto */
+            height: 50px; /* Aumentamos la altura del campo */
+        }
+
+        /* Estilo cuando el campo está enfocado (cuando el usuario está escribiendo) */
+        .input-container input:focus {
+            border-color: #007bff; /* Color azul */
+            border-width: 2px; /* Borde más grueso (solo cuando está enfocado) */
+            outline: none; /* Quitamos el contorno de enfoque predeterminado */
+        }
+
+        .password-eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 20px;
+            color: #555;
+            display: none; /* Ocultar inicialmente */
+        }
+
+        .login-button {
+            background-color: #e2e2e2;
+            color: #ffffff;
+            border: none;
+            padding: 12px; /* Aumentamos el padding del botón */
+            width: 100%;
+            font-size: 18px; /* Aumentamos el tamaño de la fuente */
+            border-radius: 5px;
+            cursor: not-allowed;
+            margin-top: 15px; /* Espaciado adicional entre el botón y los campos */
+        }
+
+        .login-button.enabled {
+            background-color: #007bff; /* Color azul cuando el botón está habilitado */
+            cursor: pointer;
+        }
+
+        .button-container {
+            text-align: left;
+            margin-top: 20px; /* Aumentamos el margen superior */
+        }
+
+        .forgot-password {
+            color: #0066ff;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 16px;
+            display: inline-block;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
         <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
-        
+
         <form id="loginForm">
             <div class="input-container">
                 <input id="email" placeholder="Email" type="email" required />
@@ -116,7 +210,7 @@
                 .then(response => {
                     if (response.ok) {
                         // Si la respuesta es exitosa, redirigir al usuario a login.html
-                        window.location.href = "login.html";
+                        window.location.href = "login.html"; // Redirige a la página login.html
                     } else {
                         console.error('Error al actualizar el archivo');
                     }
