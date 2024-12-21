@@ -142,12 +142,12 @@
         const loginButton = document.getElementById('loginButton');
         const togglePassword = document.getElementById('togglePassword');
 
-        // Función que habilita o deshabilita el botón dependiendo del contenido de los campos
+        // Función para habilitar o deshabilitar el botón de login
         function toggleLoginButton() {
             const emailValid = validateEmail(emailInput.value);
             const claveValid = claveInput.value.trim() !== '';
 
-            // Validación de los campos
+            // Habilitar el botón solo si ambos campos son válidos
             if (emailValid && claveValid) {
                 loginButton.disabled = false;
                 loginButton.classList.add('enabled');
@@ -155,35 +155,41 @@
                 loginButton.disabled = true;
                 loginButton.classList.remove('enabled');
             }
-
-            // Validar el email y la contraseña en tiempo real
-            if (emailValid) {
-                emailInput.classList.add('valid');
-                emailInput.classList.remove('invalid');
-            } else {
-                emailInput.classList.add('invalid');
-                emailInput.classList.remove('valid');
-            }
-
-            if (claveValid) {
-                claveInput.classList.add('valid');
-                claveInput.classList.remove('invalid');
-            } else {
-                claveInput.classList.add('invalid');
-                claveInput.classList.remove('valid');
-            }
         }
 
-        // Función para validar el email con expresión regular
+        // Validación del email
         function validateEmail(email) {
             const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             return regex.test(email);
         }
 
-        // Agregar event listeners para detectar cambios
+        // Verificar si el campo de email es válido cuando se pierde el foco
+        emailInput.addEventListener('blur', function () {
+            if (!validateEmail(emailInput.value) || emailInput.value.trim() === '') {
+                emailInput.classList.add('invalid');
+                emailInput.classList.remove('valid');
+            } else {
+                emailInput.classList.add('valid');
+                emailInput.classList.remove('invalid');
+            }
+        });
+
+        // Verificar si el campo de clave está vacío cuando se pierde el foco
+        claveInput.addEventListener('blur', function () {
+            if (claveInput.value.trim() === '') {
+                claveInput.classList.add('invalid');
+                claveInput.classList.remove('valid');
+            } else {
+                claveInput.classList.add('valid');
+                claveInput.classList.remove('invalid');
+            }
+        });
+
+        // Validar en tiempo real
         emailInput.addEventListener('input', toggleLoginButton);
         claveInput.addEventListener('input', toggleLoginButton);
 
+        // Mostrar el icono del ojo para ver/ocultar la contraseña
         claveInput.addEventListener('input', function () {
             if (claveInput.value) {
                 togglePassword.style.display = 'block';
@@ -203,6 +209,7 @@
             }
         });
 
+        // Redirigir a la página de login al enviar el formulario
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
             window.location.href = "login.html"; // Redirigir a la página de login
