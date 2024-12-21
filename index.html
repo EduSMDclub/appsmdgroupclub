@@ -42,13 +42,14 @@
         }
 
         .input-container input {
-            width: 100%;
+            width: calc(100% + 20px); /* Aumentamos un poco el ancho */
             padding: 12px; /* Aumentamos el padding para que los campos sean más grandes */
             margin-top: 5px;
             border: 1px solid #ccc; /* Borde gris claro por defecto */
             box-sizing: border-box;
             font-size: 16px; /* Aumentamos el tamaño de la fuente */
             border-radius: 0; /* Esquinas cuadradas por defecto */
+            margin-left: -10px; /* Ajustamos la alineación para que no se desplace */
         }
 
         /* Estilo cuando el campo está enfocado (cuando el usuario está escribiendo) */
