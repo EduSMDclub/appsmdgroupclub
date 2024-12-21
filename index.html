@@ -25,6 +25,21 @@
             padding: 40px; /* Aumentamos el padding para más espacio */
             text-align: center;
             width: 420px; /* Aumentamos el ancho */
+            position: relative; /* Añadido para poder usar el borde */
+            margin: 0 15px; /* Espacio alrededor del cuadro */
+            border: 2px solid transparent; /* Borde invisible pero con espacio */
+        }
+
+        /* Este borde incoloro se va a ver a los lados del recuadro blanco */
+        .login-container:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid transparent;
+            border-radius: 10px; /* Opcional, si quieres bordes redondeados también */
         }
 
         .logo {
@@ -42,21 +57,12 @@
         }
 
         .input-container input {
-            width: 100%; /* El ancho sigue siendo 100% */
-            padding: 15px; /* Aumentamos el padding para hacer el campo más grande */
+            width: 100%;
+            padding: 12px; /* Aumentamos el padding para que los campos sean más grandes */
             margin-top: 5px;
-            border: 1px solid #ccc; /* Borde gris claro por defecto */
+            border: 1px solid #ccc;
             box-sizing: border-box;
             font-size: 16px; /* Aumentamos el tamaño de la fuente */
-            border-radius: 0; /* Esquinas cuadradas por defecto */
-            height: 50px; /* Aumentamos la altura del campo */
-        }
-
-        /* Estilo cuando el campo está enfocado (cuando el usuario está escribiendo) */
-        .input-container input:focus {
-            border-color: #007bff; /* Color azul */
-            border-width: 2px; /* Borde más grueso (solo cuando está enfocado) */
-            outline: none; /* Quitamos el contorno de enfoque predeterminado */
         }
 
         .password-eye {
