@@ -58,6 +58,14 @@
             border-radius: 0; /* Aquí eliminamos el borde redondeado */
         }
 
+        /* Agregar margen de 15px en dispositivos móviles */
+        @media (max-width: 480px) {
+            .error-container {
+                margin: 15px;  /* Margen reducido de 15px alrededor del contenedor en móviles */
+                width: auto;   /* Permitir que el contenedor se ajuste al tamaño disponible */
+            }
+        }
+
         .logo {
             color: red;
             font-size: 50px;
