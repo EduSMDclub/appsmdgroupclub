@@ -19,21 +19,20 @@
             margin: 0;
         }
 
-        /* Nuevo contenedor con margen para móviles sin afectar el centrado */
         .login-container {
             background-color: #fff;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
             padding: 40px;
             text-align: center;
-            width: 420px;
+            width: 420px; /* Mantener el mismo ancho original */
             max-width: 100%;
             box-sizing: border-box;
         }
 
-        /* Añadir un pequeño margen en dispositivos móviles (sin afectar el centrado) */
+        /* Añadir un pequeño margen lateral en móviles, sin alterar el diseño original */
         @media (max-width: 480px) {
             .login-container {
-                margin: 0 10px; /* Margen lateral para evitar que el recuadro se quede pegado */
+                margin: 0 15px; /* Añadir margen lateral solo en móviles */
             }
         }
 
