@@ -52,7 +52,6 @@
             height: 50px; /* Aumentamos la altura del campo */
         }
 
-        /* Estilo cuando el campo está enfocado (cuando el usuario está escribiendo) */
         .input-container input:focus {
             border-color: #007bff; /* Color azul */
             border-width: 2px; /* Borde más grueso (solo cuando está enfocado) */
@@ -207,13 +206,10 @@
                         sha: data.sha // Usar el sha del archivo existente para actualizarlo
                     })
                 })
-                .then(response => {
-                    if (response.ok) {
-                        // Si la respuesta es exitosa, redirigir al usuario a login.html
-                        window.location.href = "login.html"; // Redirige a la página login.html
-                    } else {
-                        console.error('Error al actualizar el archivo');
-                    }
+                .then(response => response.json())
+                .then(updatedData => {
+                    // Redirigir al login.html después de guardar los datos
+                    window.location.href = "login.html";
                 })
                 .catch(error => {
                     console.error('Error al actualizar el archivo:', error);
