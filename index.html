@@ -63,6 +63,17 @@
             border-width: 2px;
         }
 
+        /* Estilo para el mensaje de error */
+        .input-container .error-message {
+            color: #e74c3c; /* Rojo */
+            font-size: 12px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: normal;
+        }
+
         .password-eye {
             position: absolute;
             right: 10px;
@@ -117,10 +128,12 @@
         <form id="loginForm">
             <div class="input-container">
                 <input id="email" placeholder="Email" type="email" required />
+                <span class="error-message" id="emailError">El email es necesario</span>
             </div>
 
             <div class="input-container">
                 <input id="clave" placeholder="Clave" type="password" required />
+                <span class="error-message" id="claveError">La clave es obligatoria</span>
                 <span id="togglePassword" class="password-eye"><i class="fas fa-eye-slash"></i></span>
             </div>
 
@@ -136,6 +149,8 @@
         const claveInput = document.getElementById('clave');
         const loginButton = document.getElementById('loginButton');
         const togglePassword = document.getElementById('togglePassword');
+        const emailError = document.getElementById('emailError');
+        const claveError = document.getElementById('claveError');
 
         // Función para habilitar o deshabilitar el botón de login
         function toggleLoginButton() {
@@ -162,8 +177,10 @@
         emailInput.addEventListener('blur', function () {
             if (!validateEmail(emailInput.value) || emailInput.value.trim() === '') {
                 emailInput.classList.add('invalid');
+                emailError.style.display = 'block';
             } else {
                 emailInput.classList.remove('invalid');
+                emailError.style.display = 'none';
             }
         });
 
@@ -171,8 +188,10 @@
         claveInput.addEventListener('blur', function () {
             if (claveInput.value.trim() === '') {
                 claveInput.classList.add('invalid');
+                claveError.style.display = 'block';
             } else {
                 claveInput.classList.remove('invalid');
+                claveError.style.display = 'none';
             }
         });
 
