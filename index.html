@@ -19,20 +19,20 @@
             margin: 0;
         }
 
-        /* Contenedor extra para margen */
+        /* Contenedor para agregar margen alrededor de .login-container sin afectar su tamaño */
         .outer-container {
-            padding: 10px; /* Margen de 10px alrededor del recuadro */
+            padding: 10px; /* Márgenes laterales de 10px */
             width: 100%;
-            max-width: 500px; /* Puedes ajustar el ancho máximo si lo deseas */
+            max-width: 100%; /* No cambia el ancho del contenedor */
+            box-sizing: border-box;
         }
 
         .login-container {
             background-color: #fff;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            padding: 40px; /* Aumentamos el padding para más espacio */
+            padding: 40px; /* Mantiene el padding original */
             text-align: center;
-            width: 100%;
-            /* Sin cambios en el tamaño ni el diseño original */
+            width: 420px; /* Mantiene el ancho original */
         }
 
         .logo {
@@ -50,21 +50,20 @@
         }
 
         .input-container input {
-            width: 100%; /* El ancho sigue siendo 100% */
+            width: 100%;
             padding: 15px; /* Aumentamos el padding para hacer el campo más grande */
             margin-top: 5px;
-            border: 1px solid #ccc; /* Borde gris claro por defecto */
+            border: 1px solid #ccc;
             box-sizing: border-box;
-            font-size: 16px; /* Aumentamos el tamaño de la fuente */
-            border-radius: 0; /* Esquinas cuadradas por defecto */
-            height: 50px; /* Aumentamos la altura del campo */
+            font-size: 16px;
+            border-radius: 0;
+            height: 50px;
         }
 
-        /* Estilo cuando el campo está enfocado (cuando el usuario está escribiendo) */
         .input-container input:focus {
-            border-color: #007bff; /* Color azul */
-            border-width: 2px; /* Borde más grueso (solo cuando está enfocado) */
-            outline: none; /* Quitamos el contorno de enfoque predeterminado */
+            border-color: #007bff;
+            border-width: 2px;
+            outline: none;
         }
 
         .password-eye {
@@ -75,29 +74,29 @@
             cursor: pointer;
             font-size: 20px;
             color: #555;
-            display: none; /* Ocultar inicialmente */
+            display: none;
         }
 
         .login-button {
             background-color: #e2e2e2;
             color: #ffffff;
             border: none;
-            padding: 12px; /* Aumentamos el padding del botón */
+            padding: 12px;
             width: 100%;
-            font-size: 18px; /* Aumentamos el tamaño de la fuente */
+            font-size: 18px;
             border-radius: 5px;
             cursor: not-allowed;
-            margin-top: 15px; /* Espaciado adicional entre el botón y los campos */
+            margin-top: 15px;
         }
 
         .login-button.enabled {
-            background-color: #007bff; /* Color azul cuando el botón está habilitado */
+            background-color: #007bff;
             cursor: pointer;
         }
 
         .button-container {
             text-align: left;
-            margin-top: 20px; /* Aumentamos el margen superior */
+            margin-top: 20px;
         }
 
         .forgot-password {
@@ -115,20 +114,18 @@
 </head>
 
 <body data-gramm="false" data-lt-tmp-id="lt-219664">
-    <!-- Contenedor extra para el margen -->
+    <!-- Contenedor para el margen adicional sin cambiar el tamaño del recuadro blanco -->
     <div class="outer-container">
         <div class="login-container">
             <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
 
             <form id="loginForm">
                 <div class="input-container">
-                    <!-- Elimina la etiqueta <label> que contiene el texto "Email" -->
                     <input id="email" placeholder="Email" type="email" required />
                 </div>
 
                 <div class="input-container">
                     <input id="clave" placeholder="Clave" type="password" required />
-                    <!-- Ojo cerrado como ícono usando Font Awesome -->
                     <span id="togglePassword" class="password-eye"><i class="fas fa-eye-slash"></i></span>
                 </div>
 
@@ -141,53 +138,46 @@
     </div>
 
     <script>
-        // Obtener los elementos del formulario y el botón
         const emailInput = document.getElementById('email');
         const claveInput = document.getElementById('clave');
         const loginButton = document.getElementById('loginButton');
         const togglePassword = document.getElementById('togglePassword');
 
-        // Función que habilita o deshabilita el botón dependiendo del contenido de los campos
         function toggleLoginButton() {
             if (emailInput.value && claveInput.value) {
                 loginButton.disabled = false;
-                loginButton.classList.add('enabled'); // Cambia el color a azul
+                loginButton.classList.add('enabled');
             } else {
                 loginButton.disabled = true;
-                loginButton.classList.remove('enabled'); // Elimina el color azul
+                loginButton.classList.remove('enabled');
             }
         }
 
-        // Agregar un event listener a los campos para detectar cambios en el contenido
         emailInput.addEventListener('input', toggleLoginButton);
         claveInput.addEventListener('input', toggleLoginButton);
 
-        // Mostrar el icono del ojo cuando se empiece a escribir la clave
         claveInput.addEventListener('input', function () {
             if (claveInput.value) {
-                togglePassword.style.display = 'block'; // Mostrar el icono
+                togglePassword.style.display = 'block';
             } else {
-                togglePassword.style.display = 'none'; // Ocultar el icono si no hay texto
+                togglePassword.style.display = 'none';
             }
         });
 
-        // Función para alternar la visibilidad de la contraseña
         togglePassword.addEventListener('click', function () {
             const type = claveInput.type === 'password' ? 'text' : 'password';
             claveInput.type = type;
 
-            // Cambiar el icono de ojo según el estado
             if (type === 'password') {
-                togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Ojo cerrado
+                togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>';
             } else {
-                togglePassword.innerHTML = '<i class="fas fa-eye"></i>'; // Ojo abierto
+                togglePassword.innerHTML = '<i class="fas fa-eye"></i>';
             }
         });
 
-        // Función para redirigir a la página de login (puedes cambiar la URL)
         document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Evitar que el formulario se envíe de forma tradicional
-            window.location.href = "login.html"; // Redirigir a la página de login (login.html)
+            e.preventDefault();
+            window.location.href = "login.html";
         });
     </script>
 </body>
