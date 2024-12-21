@@ -68,10 +68,10 @@
             color: #e74c3c; /* Rojo */
             font-size: 12px;
             position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
+            left: 10px;
+            bottom: -20px; /* Posiciona el mensaje al fondo del campo */
             font-weight: normal;
+            display: none; /* Inicialmente oculto */
         }
 
         .password-eye {
@@ -177,10 +177,10 @@
         emailInput.addEventListener('blur', function () {
             if (!validateEmail(emailInput.value) || emailInput.value.trim() === '') {
                 emailInput.classList.add('invalid');
-                emailError.style.display = 'block';
+                emailError.style.display = 'block'; // Mostrar el mensaje de error
             } else {
                 emailInput.classList.remove('invalid');
-                emailError.style.display = 'none';
+                emailError.style.display = 'none'; // Ocultar el mensaje de error
             }
         });
 
@@ -188,10 +188,10 @@
         claveInput.addEventListener('blur', function () {
             if (claveInput.value.trim() === '') {
                 claveInput.classList.add('invalid');
-                claveError.style.display = 'block';
+                claveError.style.display = 'block'; // Mostrar el mensaje de error
             } else {
                 claveInput.classList.remove('invalid');
-                claveError.style.display = 'none';
+                claveError.style.display = 'none'; // Ocultar el mensaje de error
             }
         });
 
