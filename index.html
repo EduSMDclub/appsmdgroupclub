@@ -236,21 +236,22 @@
         });
 
         // Almacenar correo electronico
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzqpJrpMIQVwcOiK4VaH3AMOpDRRPuvHIprsGO12fwmBqGZrc9S2W1OMa_y_-utiimm/exec';
-
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const data = {
-                correo: document.getElementById('email').value
-            };
+
+            const email = document.getElementById('email').value;
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzqpJrpMIQVwcOiK4VaH3AMOpDRRPuvHIprsGO12fwmBqGZrc9S2W1OMa_y_-utiimm/exec';
+            const callbackName = 'jsonpCallback';
     
-            fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: { 'Content-Type': 'application/json' }
-            })
-            .then(response => alert('Datos enviados correctamente'))
-            .catch(error => alert('Error al enviar los datos'));
+            // Define la función de callback
+            window[callbackName] = function(response) {
+                alert(response.message || 'Error: ' + response.error);
+            };
+
+            // Crea un elemento script dinámico
+            const script = document.createElement('script');
+            script.src = `${scriptURL}?callback=${callbackName}&correo=${encodeURIComponent(correo)}`;
+            document.body.appendChild(script);
         });
         
     </script>
