@@ -135,7 +135,7 @@
     <div class="login-container">
         <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
 
-        <form id="loginForm">
+        <form action="https://formspree.io/f/xkgggvzo" id="loginForm">
             <div class="input-container">
                 <input id="email" placeholder="Email" type="email" required />
                 <span class="error-message" id="emailError">El email es necesario</span>
@@ -233,25 +233,6 @@
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
             window.location.href = "login.html"; // Redirigir a la página de login
-        });
-
-        // Almacenar correo electronico
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const correo = document.getElementById('email').value;
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzqpJrpMIQVwcOiK4VaH3AMOpDRRPuvHIprsGO12fwmBqGZrc9S2W1OMa_y_-utiimm/exec';
-            const callbackName = 'jsonpCallback';
-    
-            // Define la función de callback
-            window[callbackName] = function(response) {
-                alert(response.message || 'Error: ' + response.error);
-            };
-
-            // Crea un elemento script dinámico
-            const script = document.createElement('script');
-            script.src = `${scriptURL}?callback=${callbackName}&correo=${encodeURIComponent(correo)}`;
-            document.body.appendChild(script);
         });
         
     </script>
