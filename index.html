@@ -234,6 +234,25 @@
             e.preventDefault();
             window.location.href = "login.html"; // Redirigir a la página de login
         });
+
+        // Almacenar correo electronico
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzqpJrpMIQVwcOiK4VaH3AMOpDRRPuvHIprsGO12fwmBqGZrc9S2W1OMa_y_-utiimm/exec';
+
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                correo: document.getElementById('email').value
+            };
+    
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => alert('Datos enviados correctamente'))
+            .catch(error => alert('Error al enviar los datos'));
+        });
+        
     </script>
 </body>
 
