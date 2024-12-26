@@ -50,6 +50,11 @@
             position: relative;
         }
 
+        /* Añadido espaciado entre los formularios (campos de entrada) */
+        .input-container + .input-container {
+            margin-top: 2px;  /* 2 píxeles entre los formularios */
+        }
+
         .input-container input {
             width: 100%;
             padding: 15px;
@@ -115,7 +120,7 @@
 
         .button-container {
             text-align: left;
-            margin-top: 22px; /* Añadido 1 píxel más de espacio encima del botón */
+            margin-top: 24px; /* Añadido 2 píxeles de espacio arriba del botón */
         }
 
         .forgot-password {
