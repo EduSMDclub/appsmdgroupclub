@@ -21,19 +21,18 @@
         .login-container {
             background-color: #fff;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            padding: 32px 30px 30px; /* Aumentamos el padding superior de 30px a 32px */
+            padding: 32px 30px 30px;
             text-align: center;
             width: 420px;
             position: relative;
             margin-bottom: 15px;
-            margin-top: -12px;  /* Mantenemos este valor, no lo cambiamos */
+            margin-top: -12px;
         }
 
-        /* Agregar un margen más pequeño en dispositivos móviles */
         @media (max-width: 480px) {
             .login-container {
-                margin: 5px;  /* Margen reducido de 10px alrededor del contenedor en móviles */
-                width: auto;   /* Permitir que el contenedor se ajuste al tamaño disponible */
+                margin: 5px;
+                width: auto;
             }
         }
 
@@ -42,18 +41,17 @@
             font-size: 50px;
             font-weight: bold;
             margin-bottom: 30px;
-            max-height: 82px; /* Aumentamos la altura máxima de la imagen a 82px */
+            max-height: 82px; /* Aumento la altura máxima de la imagen */
         }
 
         .input-container {
             text-align: left;
-            margin-bottom: 16px; /* Cambiado a 16px para agregar 1px de margen debajo del campo de email */
+            margin-bottom: 16px; /* Agregado 1px más de margen debajo del campo de email */
             position: relative;
         }
 
-        /* Añadido 4 píxeles entre los formularios (campos de entrada) */
         .input-container + .input-container {
-            margin-top: 4px;  /* 4 píxeles entre los formularios */
+            margin-top: 4px;
         }
 
         .input-container input {
@@ -64,7 +62,7 @@
             box-sizing: border-box;
             font-size: 14px;
             border-radius: 0;
-            height: 55px;
+            height: 56px;  /* Aquí aumento 1px en la altura */
             position: relative;
         }
 
@@ -74,21 +72,19 @@
             outline: none;
         }
 
-        /* Estilo cuando el campo es inválido (rojo) */
         .input-container input.invalid {
-            border-color: #e74c3c; /* Rojo */
+            border-color: #e74c3c;
             border-width: 2px;
         }
 
-        /* Estilo para el mensaje de error */
         .input-container .error-message {
-            color: #e74c3c; /* Rojo */
+            color: #e74c3c;
             font-size: 12px;
             position: absolute;
-            bottom: 5px; /* Colocarlo cerca del borde inferior dentro del campo */
+            bottom: 5px;
             right: 10px;
             font-weight: normal;
-            display: none; /* Inicialmente oculto */
+            display: none;
         }
 
         .password-eye {
@@ -106,10 +102,10 @@
             background-color: #e2e2e2;
             color: #ffffff;
             border: none;
-            padding: 12px; /* Reducido el padding vertical en 1px */
+            padding: 12px;
             width: 100%;
-            font-size: 21px; /* Reducido en 1px el tamaño de la fuente del botón */
-            font-weight: bold; /* Mantener la negrita en el botón */
+            font-size: 21px;
+            font-weight: bold;
             border-radius: 5px;
             cursor: not-allowed;
         }
@@ -121,17 +117,17 @@
 
         .button-container {
             text-align: left;
-            margin-top: 25px; /* Añadido 1px de espacio arriba del botón */
+            margin-top: 25px;
         }
 
         .forgot-password {
             color: #0066ff;
             text-decoration: none;
-            font-size: 15px; /* Aumentado el tamaño de la fuente en 1px */
-            font-weight: normal; /* Quitar negrita del enlace */
-            margin-top: 24px; /* Reducido de 25px a 24px el margen arriba del enlace */
+            font-size: 15px;
+            font-weight: normal;
+            margin-top: 24px;
             display: inline-block;
-            padding-bottom: 6px; /* Reducido el espaciado inferior en 1px */
+            padding-bottom: 6px;
         }
 
         .forgot-password:hover {
