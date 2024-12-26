@@ -25,8 +25,8 @@
             text-align: center;
             width: 420px;
             position: relative;
-            margin-bottom: 13px; /* Reducido 2 px de margen inferior */
-            margin-top: 0px;
+            margin-bottom: 15px;
+            margin-top: -2px;  /* Desplazamos el contenedor 2 píxeles hacia arriba */
         }
 
         /* Agregar un margen más pequeño en dispositivos móviles */
@@ -136,13 +136,6 @@
 
         .forgot-password:hover {
             text-decoration: underline;
-        }
-
-        /* Agregar margen adicional debajo del contenedor */
-        .login-container:after {
-            content: '';
-            display: block;
-            height: 2px; /* Este es el margen invisible de 2px */
         }
     </style>
 </head>
