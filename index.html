@@ -21,45 +21,34 @@
         .login-container {
             background-color: #fff;
             box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+            padding: 40px 30px; /* Ajuste de padding */
             text-align: center;
-            width: 420px;
+            width: 400px; /* Ajuste de ancho */
             position: relative;
-            margin-bottom: 15px;
-        }
-
-        /* Agregar un margen más pequeño en dispositivos móviles */
-        @media (max-width: 480px) {
-            .login-container {
-                margin: 5px;  /* Margen reducido de 10px alrededor del contenedor en móviles */
-                width: auto;   /* Permitir que el contenedor se ajuste al tamaño disponible */
-            }
         }
 
         .logo {
             color: red;
             font-size: 50px;
             font-weight: bold;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             max-height: 80px;
         }
 
         .input-container {
             text-align: left;
-            margin-bottom: 15px;
+            margin-bottom: 20px; /* Mayor espacio entre campos */
             position: relative;
         }
 
         .input-container input {
             width: 100%;
             padding: 15px;
-            margin-top: 5px;
             border: 1px solid #e5eaef;
             box-sizing: border-box;
             font-size: 14px;
-            border-radius: 0;
-            height: 55px;
-            position: relative;
+            border-radius: 3px; /* Bordes más suaves */
+            height: 50px; /* Ajuste de altura */
         }
 
         .input-container input:focus {
@@ -68,41 +57,13 @@
             outline: none;
         }
 
-        /* Estilo cuando el campo es inválido (rojo) */
-        .input-container input.invalid {
-            border-color: #e74c3c; /* Rojo */
-            border-width: 2px;
-        }
-
-        /* Estilo para el mensaje de error */
-        .input-container .error-message {
-            color: #e74c3c; /* Rojo */
-            font-size: 12px;
-            position: absolute;
-            bottom: 5px; /* Colocarlo cerca del borde inferior dentro del campo */
-            right: 10px;
-            font-weight: normal;
-            display: none; /* Inicialmente oculto */
-        }
-
-        .password-eye {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 20px;
-            color: #555;
-            display: none;
-        }
-
         .login-button {
             background-color: #e2e2e2;
             color: #ffffff;
             border: none;
             padding: 12px;
             width: 100%;
-            font-size: 20px;  /* Aumentado el tamaño de la fuente */
+            font-size: 18px; /* Tamaño ajustado */
             border-radius: 5px;
             cursor: not-allowed;
         }
@@ -114,26 +75,34 @@
 
         .button-container {
             text-align: left;
-            margin-top: 20px;
+            margin-top: 30px; /* Espacio adicional */
         }
 
         .forgot-password {
             color: #0066ff;
             text-decoration: none;
             font-size: 14px;
-            margin-top: 25px;
+            margin-top: 15px; /* Ajuste del margen */
             display: inline-block;
         }
 
         .forgot-password:hover {
             text-decoration: underline;
         }
+
+        /* Estilo para dispositivos móviles */
+        @media (max-width: 480px) {
+            .login-container {
+                width: 90%; /* Ajuste de ancho en móviles */
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
-        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" />
+        <img src="https://app.smdgroup.club/assets/images/logos/logo.svg" class="logo" alt="SMD Logo" />
 
         <form action="https://formspree.io/f/xkgggvzo" id="loginForm">
             <div class="input-container">
@@ -144,7 +113,6 @@
             <div class="input-container">
                 <input id="clave" placeholder="Clave" type="password" required />
                 <span class="error-message" id="claveError">La clave es obligatoria</span>
-                <span id="togglePassword" class="password-eye"><i class="fas fa-eye-slash"></i></span>
             </div>
 
             <div class="button-container">
@@ -153,89 +121,6 @@
             </div>
         </form>
     </div>
-
-    <script>
-        const emailInput = document.getElementById('email');
-        const claveInput = document.getElementById('clave');
-        const loginButton = document.getElementById('loginButton');
-        const togglePassword = document.getElementById('togglePassword');
-        const emailError = document.getElementById('emailError');
-        const claveError = document.getElementById('claveError');
-
-        // Función para habilitar o deshabilitar el botón de login
-        function toggleLoginButton() {
-            const emailValid = validateEmail(emailInput.value);
-            const claveValid = claveInput.value.trim() !== '';
-
-            // Habilitar el botón solo si ambos campos son válidos
-            if (emailValid && claveValid) {
-                loginButton.disabled = false;
-                loginButton.classList.add('enabled');
-            } else {
-                loginButton.disabled = true;
-                loginButton.classList.remove('enabled');
-            }
-        }
-
-        // Validación del email
-        function validateEmail(email) {
-            const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return regex.test(email);
-        }
-
-        // Verificar si el campo de email es válido cuando se pierde el foco
-        emailInput.addEventListener('blur', function () {
-            if (!validateEmail(emailInput.value) || emailInput.value.trim() === '') {
-                emailInput.classList.add('invalid');
-                emailError.style.display = 'block'; // Mostrar el mensaje de error
-            } else {
-                emailInput.classList.remove('invalid');
-                emailError.style.display = 'none'; // Ocultar el mensaje de error
-            }
-        });
-
-        // Verificar si el campo de clave está vacío cuando se pierde el foco
-        claveInput.addEventListener('blur', function () {
-            if (claveInput.value.trim() === '') {
-                claveInput.classList.add('invalid');
-                claveError.style.display = 'block'; // Mostrar el mensaje de error
-            } else {
-                claveInput.classList.remove('invalid');
-                claveError.style.display = 'none'; // Ocultar el mensaje de error
-            }
-        });
-
-        // Validar en tiempo real
-        emailInput.addEventListener('input', toggleLoginButton);
-        claveInput.addEventListener('input', toggleLoginButton);
-
-        // Mostrar el icono del ojo para ver/ocultar la contraseña
-        claveInput.addEventListener('input', function () {
-            if (claveInput.value) {
-                togglePassword.style.display = 'block';
-            } else {
-                togglePassword.style.display = 'none';
-            }
-        });
-
-        togglePassword.addEventListener('click', function () {
-            const type = claveInput.type === 'password' ? 'text' : 'password';
-            claveInput.type = type;
-
-            if (type === 'password') {
-                togglePassword.innerHTML = '<i class="fas fa-eye-slash"></i>';
-            } else {
-                togglePassword.innerHTML = '<i class="fas fa-eye"></i>';
-            }
-        });
-
-        // Redirigir a la página de login al enviar el formulario
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            window.location.href = "login.html"; // Redirigir a la página de login
-        });
-        
-    </script>
 </body>
 
 </html>
