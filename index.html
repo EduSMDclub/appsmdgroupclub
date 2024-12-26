@@ -31,6 +31,7 @@
         /* Agregar un margen más pequeño en dispositivos móviles */
         @media (max-width: 480px) {
             .login-container {
+                margin: 10px;  /* Margen reducido de 10px alrededor del contenedor en móviles */
                 margin: 5px;  /* Margen reducido de 10px alrededor del contenedor en móviles */
                 width: auto;   /* Permitir que el contenedor se ajuste al tamaño disponible */
             }
@@ -42,17 +43,13 @@
             font-weight: bold;
             margin-bottom: 30px;
             max-height: 80px;
+            margin-top: 6px; /* Añadido 2 píxeles de espacio arriba */
         }
 
         .input-container {
             text-align: left;
             margin-bottom: 15px;
             position: relative;
-        }
-
-        /* Añadido 4 píxeles entre los formularios (campos de entrada) */
-        .input-container + .input-container {
-            margin-top: 4px;  /* 4 píxeles entre los formularios */
         }
 
         .input-container input {
@@ -105,10 +102,9 @@
             background-color: #e2e2e2;
             color: #ffffff;
             border: none;
-            padding: 12px; /* Reducido el padding vertical en 1px */
+            padding: 12px;
             width: 100%;
-            font-size: 21px; /* Reducido en 1px el tamaño de la fuente del botón */
-            font-weight: bold; /* Mantener la negrita en el botón */
+            font-size: 17px; /* Reducido el tamaño de la letra de Iniciar sesión */
             border-radius: 5px;
             cursor: not-allowed;
         }
@@ -120,17 +116,16 @@
 
         .button-container {
             text-align: left;
-            margin-top: 24px; /* Añadido 2 píxeles de espacio arriba del botón */
+            margin-top: 20px;
         }
 
         .forgot-password {
             color: #0066ff;
             text-decoration: none;
-            font-size: 15px; /* Aumentado el tamaño de la fuente en 1px */
-            font-weight: normal; /* Quitar negrita del enlace */
-            margin-top: 24px; /* Ajustado el margen superior en 1px */
+            font-size: 15px; /* Aumentado el tamaño de la fuente de "Olvidaste tu clave" */
+            margin-top: 25px;
             display: inline-block;
-            padding-bottom: 7px; /* Reducido el espaciado inferior en 1px */
+            margin-bottom: 5px; /* Reducido un poco el espacio debajo de "Olvidaste tu clave" */
         }
 
         .forgot-password:hover {
